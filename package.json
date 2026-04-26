@@ -1,0 +1,9 @@
+{
+  "name": "neutrona",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "echo build complete"
+  },
+  "dependencies": {}
+}
