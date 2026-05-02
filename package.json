@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node server/index.js",
-    "build": "echo build complete"
+    "build": "cd server && npm install"
   },
-  "dependencies": {}
+  "engines": {
+    "node": "20.x"
+  }
 }
