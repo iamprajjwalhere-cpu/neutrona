@@ -7,13 +7,20 @@ const chatRoutes = require('./routes/chat');
 const adminRoutes = require('./routes/admin');
 const expenseRoutes = require('./routes/expense');
 
+// Load .env only in development
+try {
+  require('dotenv').config();
+} catch(e) {}
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI)
+const MONGO_URI = process.env.MONGO_URI;
+console.log('MONGO_URI exists:', !!MONGO_URI);
+
+mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB Connected ✅'))
   .catch((err) => console.log('MongoDB Error ❌', err));
 
