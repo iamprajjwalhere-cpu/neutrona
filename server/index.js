@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const bankingRoutes = require('./routes/banking');
@@ -8,9 +7,6 @@ const chatRoutes = require('./routes/chat');
 const adminRoutes = require('./routes/admin');
 const expenseRoutes = require('./routes/expense');
 
-if (process.env.NODE_ENV !== 'production') {
-  dotenv.config();
-}
 
 const app = express();
 
