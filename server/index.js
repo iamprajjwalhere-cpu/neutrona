@@ -20,7 +20,7 @@ app.use(express.json());
 const MONGO_URI = process.env.MONGO_URI;
 console.log('MONGO_URI exists:', !!MONGO_URI);
 
-mongoose.connect(MONGO_URI)
+mongoose.connect('mongodb+srv://neutronaadmin:neutrona123@cluster0.ixgfmcy.mongodb.net/neutrona?appName=Cluster0')
   .then(() => console.log('MongoDB Connected ✅'))
   .catch((err) => console.log('MongoDB Error ❌', err));
 
