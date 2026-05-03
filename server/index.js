@@ -6,6 +6,7 @@ const bankingRoutes = require('./routes/banking');
 const chatRoutes = require('./routes/chat');
 const adminRoutes = require('./routes/admin');
 const expenseRoutes = require('./routes/expense');
+const settingsRoutes = require('./routes/settings');
 
 // Load .env only in development
 try {
@@ -29,6 +30,7 @@ app.use('/api/banking', bankingRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/expense', expenseRoutes);
+app.use('/api/settings', settingsRoutes);
 
 app.get('/api', (req, res) => {
   res.json({ message: 'Neutrona API Running ✅' });
