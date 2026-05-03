@@ -4,7 +4,7 @@ import { register } from '../utils/api'
 import toast from 'react-hot-toast'
 
 export default function Register() {
-  const [form, setForm] = useState({ name: '', email: '', password: '' })
+  const [form, setForm] = useState({ name: '', email: '', password: '', phone: '' })
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -61,6 +61,19 @@ export default function Register() {
               required
             />
           </div>
+
+
+          <div style={styles.inputGroup}>
+  <label style={styles.label}>Phone Number</label>
+  <input
+    type="tel"
+    name="phone"
+    placeholder="+91 98765 43210"
+    value={form.phone}
+    onChange={handleChange}
+    style={styles.input}
+  />
+</div>
 
           <div style={styles.inputGroup}>
             <label style={styles.label}>Password</label>

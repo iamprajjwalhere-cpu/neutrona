@@ -12,6 +12,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true          // no two users can have same email
   },
+  PhoneNo: {
+  type: String,
+  default: ''
+},
   password: {
     type: String,
     required: true
