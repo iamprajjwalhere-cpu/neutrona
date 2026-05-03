@@ -111,6 +111,7 @@ export default function Dashboard() {
 { label: 'Analytics', icon: '◎', path: '/analytics', active: false },
 { label: 'Admin', icon: '⚡', path: '/admin', active: false },
 { label: 'Settings', icon: '⚙️', path: '/settings', active: false },
+{ label: 'Pay Bill', icon: '📃', path: '/BillPayment', active: false },
 
 ].map((item) => (
   <div key={item.label} onClick={() => navigate(item.path)} style={item.active ? styles.navItemActive : styles.navItem}>
