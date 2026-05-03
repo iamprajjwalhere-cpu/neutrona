@@ -7,6 +7,7 @@ import Analytics from './pages/Analytics'
 import Admin from './pages/Admin'
 import Expense from './pages/Expense'
 import Settings from './pages/Settings'
+import BillPayment from './pages/BillPayment'
 
 const PrivateRoute = ({ children }) => {
   const { token } = useAuth()
@@ -33,6 +34,9 @@ export default function App() {
       <Route path="*" element={<Navigate to="/login" />} />
       <Route path="/settings" element={
   <PrivateRoute><Settings /></PrivateRoute>
+} />
+    <Route path="/bills" element={
+        <PrivateRoute><BillPayment /></PrivateRoute>
 } />
     </Routes>
   )

@@ -130,4 +130,51 @@ router.get('/fraud-alerts', auth, async (req, res) => {
   }
 });
 
+router.post('/bill', auth, async (req, res) => {
+  try {
+    const { amount, category, description } = req.body;
+    if (amount <= 0) return res.status(400).json({ message: 'Amount must be greater than 0' });
+
+    const user = await User.findById(req.userId);
+    if (user.balance < amount) return res.status(400).json({ message: 'Insufficient balance ❌' });
+
+    // Run fraud detection
+    const fraud = await detectFraud(req.userId, amount, 'withdrawal');
+    if (fraud.isFlagged) {
+      return res.status(403).json({ message: '🚨 Transaction blocked — High fraud risk detected!', fraud });
+    }
+
+    user.balance -= amount;
+    await user.save();
+
+    const tx = await Transaction.create({
+      userId: req.userId,
+      type: 'withdrawal',
+      amount,
+      balanceAfter: user.balance,
+      description: description || category,
+      category,
+      status: 'success'
+    });
+
+    if (fraud.riskLevel !== 'low') {
+      await FraudAlert.create({
+        userId: req.userId,
+        transactionId: tx._id,
+        riskScore: fraud.riskScore,
+        riskLevel: fraud.riskLevel,
+        flags: fraud.flags
+      });
+    }
+
+    res.json({
+      message: `₹${amount} paid for ${category} ✅`,
+      newBalance: user.balance,
+      transaction: tx
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
 module.exports = router;
