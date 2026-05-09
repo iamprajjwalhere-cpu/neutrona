@@ -107,12 +107,10 @@ export default function Dashboard() {
 
 {[
   { label: 'Dashboard', icon: '⊞', path: '/dashboard', active: true },
-{ label: 'Expenses', icon: '💰', path: '/expense', active: false },
-{ label: 'Analytics', icon: '◎', path: '/analytics', active: false },
-{ label: 'Admin', icon: '⚡', path: '/admin', active: false },
-{ label: 'Settings', icon: '⚙️', path: '/settings', active: false },
-{ label: 'Pay Bill', icon: '📃', path: '/BillPayment', active: false },
-
+  { label: 'Bill Payment', icon: '💳', path: '/bills', active: false },
+  { label: 'Expenses', icon: '💰', path: '/expense', active: false },
+  { label: 'Analytics', icon: '◎', path: '/analytics', active: false },
+  { label: 'Settings', icon: '⚙️', path: '/settings', active: false },
 ].map((item) => (
   <div key={item.label} onClick={() => navigate(item.path)} style={item.active ? styles.navItemActive : styles.navItem}>
     <span style={styles.navIcon}>{item.icon}</span>

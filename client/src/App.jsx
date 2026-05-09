@@ -31,13 +31,13 @@ export default function App() {
       <Route path="/expense" element={
         <PrivateRoute><Expense /></PrivateRoute>
       } />
-      <Route path="*" element={<Navigate to="/login" />} />
       <Route path="/settings" element={
-  <PrivateRoute><Settings /></PrivateRoute>
-} />
-    <Route path="/bills" element={
+        <PrivateRoute><Settings /></PrivateRoute>
+      } />
+      <Route path="/bills" element={
         <PrivateRoute><BillPayment /></PrivateRoute>
-} />
+      } />
+      <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   )
 }
